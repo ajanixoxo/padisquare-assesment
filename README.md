@@ -1,4 +1,24 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Padisquare Multi-Vendor Mini Sites
+
+A production-quality Next.js (App Router v14+) application for Padisquare's Multi-Vendor Mini Sites. This application provides a multi-tenant platform where vendors can showcase their products with search, sorting, and pagination capabilities.
+
+## Features
+
+- **Multi-Tenant Routing**: Dynamic vendor pages at `/site/[vendorSlug]`
+- **Product Search**: Real-time product search functionality
+- **Sorting**: Sort products by price (low/high) or most recent
+- **Pagination**: Efficient pagination with 12 items per page
+- **Brand-Aligned Design**: Strict adherence to Padisquare brand design system
+- **Server Components**: Optimized performance with Next.js Server Components
+- **Loading & Error States**: Comprehensive loading skeletons and error handling
+
+## Tech Stack
+
+- **Next.js 16+** (App Router)
+- **TypeScript**
+- **TailwindCSS v4**
+- **Server Components** (default)
+- **Client Components** (only where needed for interactivity)
 
 ## Getting Started
 
