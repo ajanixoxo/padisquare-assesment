@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
-:root {
-  /* Padisquare Brand Colors */
+:root,
+[data-theme="dark"] {
+  /* Padisquare Brand Colors - Dark Mode (Default) */
   --background: #050B07;
   --primary-green: #159C47;
   --primary-green-light: #1fb85a;
@@ -9,6 +10,27 @@
   --text-secondary: #A3C6B1;
   --text-accent: #D68C2C;
   --border-green: rgba(21, 156, 71, 0.35);
+  --card-bg: rgba(5, 11, 7, 0.8);
+  --input-bg: rgba(5, 11, 7, 0.8);
+  --hover-bg: rgba(21, 156, 71, 0.1);
+  --header-bg: rgba(5, 11, 7, 0.95);
+  --button-bg: rgba(5, 11, 7, 0.8);
+  --button-hover: rgba(21, 156, 71, 0.1);
+}
+
+[data-theme="light"] {
+  /* Light Mode Colors */
+  --background: #ffffff;
+  --text-primary: #1a1a1a;
+  --text-secondary: #666666;
+  --text-accent: #D68C2C;
+  --border-green: rgba(21, 156, 71, 0.2);
+  --card-bg: #ffffff;
+  --input-bg: #f5f5f5;
+  --hover-bg: rgba(21, 156, 71, 0.05);
+  --header-bg: rgba(255, 255, 255, 0.95);
+  --button-bg: #f5f5f5;
+  --button-hover: rgba(21, 156, 71, 0.05);
 }
 
 @theme inline {
@@ -23,15 +45,21 @@
   --font-mono: var(--font-geist-mono);
 }
 
+html {
+  color-scheme: light dark;
+}
+
 body {
   background: var(--background);
   color: var(--text-primary);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Grid texture decoration - top-left fade */
-body::before {
+/* Grid texture decoration - top-left fade (dark mode only) */
+[data-theme="dark"] body::before,
+:root:not([data-theme="light"]) body::before {
   content: "";
   position: fixed;
   top: 0;

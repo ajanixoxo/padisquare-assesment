@@ -6,6 +6,7 @@ export const vendors: Vendor[] = [
     slug: "tech-store",
     name: "Tech Store",
     logo: "/On white BG/Dark.svg",
+    heroImage: "/On white BG/Dark@2x.png",
     description: "Your one-stop shop for the latest technology and gadgets",
     createdAt: new Date("2024-01-15"),
   },

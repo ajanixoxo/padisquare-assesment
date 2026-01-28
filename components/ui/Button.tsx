@@ -22,7 +22,16 @@ export default function Button({
   const variantStyles =
     variant === "primary"
       ? "bg-gradient-to-r from-[#159C47] to-[#1fb85a] text-white hover:opacity-90"
-      : "border border-[rgba(21,156,71,0.35)] text-[#EAF6EE] hover:bg-[rgba(21,156,71,0.1)]";
+      : "";
+
+  const style =
+    variant === "secondary"
+      ? {
+          borderColor: "var(--border-green)",
+          color: "var(--text-primary)",
+          backgroundColor: "var(--button-bg)",
+        }
+      : {};
 
   return (
     <button
@@ -30,6 +39,21 @@ export default function Button({
       onClick={onClick}
       disabled={disabled}
       className={`${baseStyles} ${variantStyles} ${className}`}
+      style={style}
+      onMouseEnter={
+        variant === "secondary"
+          ? (e) => {
+              e.currentTarget.style.backgroundColor = "var(--button-hover)";
+            }
+          : undefined
+      }
+      onMouseLeave={
+        variant === "secondary"
+          ? (e) => {
+              e.currentTarget.style.backgroundColor = "var(--button-bg)";
+            }
+          : undefined
+      }
     >
       {children}
     </button>

@@ -13,23 +13,33 @@ export default function ProductCard({ product }: ProductCardProps) {
   }).format(product.price);
 
   return (
-    <Card className="overflow-hidden p-0">
-      <div className="relative aspect-square w-full bg-[rgba(21,156,71,0.1)]">
+    <Card className="group overflow-hidden p-0 transition-shadow hover:shadow-lg [&[data-theme=light]]:hover:shadow-gray-200">
+      <div className="relative aspect-square w-full overflow-hidden" style={{ backgroundColor: 'var(--hover-bg)' }}>
         <Image
           src={product.image}
           alt={product.name}
           fill
-          className="object-contain p-4"
+          className="object-cover transition-transform group-hover:scale-105"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
         />
+        {/* Color variants indicator */}
+        <div className="absolute bottom-2 right-2 flex gap-1">
+          <div className="h-4 w-4 rounded-full border border-white bg-gray-800"></div>
+          <span className="flex h-4 items-center rounded-full border border-white bg-white/80 px-1.5 text-[10px] font-medium text-gray-900">
+            +5
+          </span>
+        </div>
       </div>
       <div className="p-4">
-        <h3 className="mb-2 text-lg font-semibold text-[#EAF6EE] line-clamp-2">
+        <p className="mb-1 text-xs font-medium uppercase" style={{ color: 'var(--text-secondary)' }}>
+          {product.name.split(" ")[0]} {product.name.split(" ")[1] || ""}
+        </p>
+        <h3 className="mb-2 line-clamp-2 text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>
           {product.name}
         </h3>
-        <p className="mb-3 text-sm text-[#A3C6B1] line-clamp-2">
-          {product.description}
+        <p className="text-lg font-bold" style={{ color: 'var(--primary-green)' }}>
+          {formattedPrice}
         </p>
-        <p className="text-xl font-bold text-[#159C47]">{formattedPrice}</p>
       </div>
     </Card>
   );

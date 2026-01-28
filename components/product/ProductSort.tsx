@@ -34,7 +34,20 @@ export default function ProductSort() {
         value={currentSort}
         onChange={(e) => handleSort(e.target.value)}
         disabled={isPending}
-        className="w-full appearance-none rounded-lg border border-[rgba(21,156,71,0.35)] bg-[rgba(5,11,7,0.8)] px-4 py-3 text-[#EAF6EE] focus:border-[rgba(21,156,71,0.6)] focus:outline-none focus:ring-1 focus:ring-[rgba(21,156,71,0.3)] [&>option]:bg-[#050B07]"
+        className="w-full appearance-none rounded-lg border px-4 py-3 focus:outline-none focus:ring-1"
+        style={{
+          borderColor: 'var(--border-green)',
+          backgroundColor: 'var(--input-bg)',
+          color: 'var(--text-primary)',
+        }}
+        onFocus={(e) => {
+          e.currentTarget.style.borderColor = 'var(--primary-green)';
+          e.currentTarget.style.boxShadow = '0 0 0 1px var(--primary-green)';
+        }}
+        onBlur={(e) => {
+          e.currentTarget.style.borderColor = 'var(--border-green)';
+          e.currentTarget.style.boxShadow = 'none';
+        }}
       >
         <option value="recent">Most Recent</option>
         <option value="price-low">Price: Low to High</option>
@@ -42,7 +55,8 @@ export default function ProductSort() {
       </select>
       <div className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2">
         <svg
-          className="h-5 w-5 text-[#A3C6B1]"
+          className="h-5 w-5"
+          style={{ color: 'var(--text-secondary)' }}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"

@@ -46,7 +46,7 @@ export default function ProductPagination({
       >
         Previous
       </Button>
-      <span className="text-[#A3C6B1]">
+      <span style={{ color: 'var(--text-secondary)' }}>
         Page {currentPage} of {totalPages}
       </span>
       <Button

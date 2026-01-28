@@ -7,15 +7,22 @@ interface CardProps {
 }
 
 export default function Card({ children, className = "", onClick }: CardProps) {
-  const baseStyles =
-    "border border-[rgba(21,156,71,0.35)] rounded-lg bg-[rgba(5,11,7,0.8)] backdrop-blur-sm";
-  const interactiveStyles = onClick
-    ? "cursor-pointer hover:border-[rgba(21,156,71,0.5)] transition-colors"
-    : "";
+  const baseStyles = "border rounded-lg backdrop-blur-sm transition-colors";
+  const interactiveStyles = onClick ? "cursor-pointer" : "";
 
   return (
     <div
       className={`${baseStyles} ${interactiveStyles} ${className}`}
+      style={{
+        borderColor: 'var(--border-green)',
+        backgroundColor: 'var(--card-bg)',
+      }}
+      onMouseEnter={onClick ? (e) => {
+        e.currentTarget.style.borderColor = 'var(--primary-green)';
+      } : undefined}
+      onMouseLeave={onClick ? (e) => {
+        e.currentTarget.style.borderColor = 'var(--border-green)';
+      } : undefined}
       onClick={onClick}
     >
       {children}
