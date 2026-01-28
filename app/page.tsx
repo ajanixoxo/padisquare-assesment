@@ -11,7 +11,7 @@ export default async function Home() {
       <HomeHeader />
       <div className="container mx-auto px-4 py-16">
         <div className="mb-12 text-center">
-          <div className="mb-4 flex justify-center">
+          <div className="mb-4 flex justify-center items-center">
             <HomePageLogo />
           </div>
           <p className="text-xl" style={{ color: 'var(--text-secondary)' }}>
