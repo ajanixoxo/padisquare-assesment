@@ -3,6 +3,7 @@ export interface Vendor {
   slug: string;
   name: string;
   logo: string;
+  heroImage?: string;
   description: string;
   createdAt: Date;
 }
@@ -15,6 +16,11 @@ export interface Product {
   price: number;
   image: string;
   createdAt: Date;
+  category?: string;
+  size?: string;
+  color?: string;
+  inStock?: boolean;
+  tags?: string[];
 }
 
 export type SortOption = "price-low" | "price-high" | "recent";
