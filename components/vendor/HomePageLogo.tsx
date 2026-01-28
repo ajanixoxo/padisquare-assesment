@@ -7,7 +7,7 @@ export default function HomePageLogo() {
     <div className="relative h">
       <ThemeAwareLogo
         fill
-        className="object-contain"
+        className=""
         priority
         alt="Padisquare logo"
       />
