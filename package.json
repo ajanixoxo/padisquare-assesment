@@ -9,9 +9,22 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@clerk/nextjs": "^7.0.12",
+    "@hookform/resolvers": "^5.2.2",
+    "@prisma/client": "^7.7.0",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.38.0",
+    "lucide-react": "^1.8.0",
     "next": "16.1.5",
+    "prisma": "^7.7.0",
+    "prisma-adapter-bun-sqlite": "^0.7.1",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "react-hook-form": "^7.72.1",
+    "slugify": "^1.6.9",
+    "tailwind-merge": "^3.5.0",
+    "zod": "^4.3.6",
+    "zustand": "^5.0.12"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -30,5 +43,8 @@
   "trustedDependencies": [
     "sharp",
     "unrs-resolver"
-  ]
+  ],
+  "prisma": {
+    "seed": "bun prisma/seed.ts"
+  }
 }

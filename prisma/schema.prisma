@@ -1,0 +1,68 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Vendor {
+  id          String    @id @default(cuid())
+  clerkId     String?   @unique // Link to Clerk User
+  slug        String    @unique
+  name        String
+  logo        String
+  heroImage   String?
+  description String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  products    Product[]
+  orders      Order[]   @relation("VendorOrders")
+}
+
+model Product {
+  id          String      @id @default(cuid())
+  vendorId    String
+  vendor      Vendor      @relation(fields: [vendorId], references: [id])
+  name        String
+  description String
+  price       Float
+  image       String
+  category    String?
+  size        String?
+  color       String?
+  inStock     Boolean     @default(true)
+  tags        String?     // Comma-separated strings
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  orderItems  OrderItem[]
+}
+
+model Order {
+  id               String      @id @default(cuid())
+  orderNumber      String      @unique // e.g. PS-12345
+  customerId       String?     // Clerk User ID if authenticated
+  customerEmail    String
+  customerName     String?
+  vendorId         String
+  vendor           Vendor      @relation("VendorOrders", fields: [vendorId], references: [id])
+  items            OrderItem[]
+  totalAmount      Float
+  status           String      @default("PENDING") // PENDING, PAID, SHIPPED, DELIVERED
+  paymentReference String?     @unique // Paystack Reference
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @updatedAt
+}
+
+model OrderItem {
+  id        String  @id @default(cuid())
+  orderId   String
+  order     Order   @relation(fields: [orderId], references: [id])
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+  quantity  Int
+  price     Float   // Historical price at time of purchase
+}
